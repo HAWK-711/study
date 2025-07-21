@@ -1,3 +1,0 @@
-# study
-# test
-# hogehoge
