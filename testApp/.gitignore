@@ -1,0 +1,58 @@
+# Build results
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Logs
+*.log
+*.tlog
+
+# Visual Studio Code
+.vscode/
+
+# Rider
+.idea/
+*.sln.iml
+
+# Auto-generated files
+*.generated.cs
+
+# Packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+# Backup & temporary files
+*.bak
+*.swp
+*.tmp
+*.temp
+~$*
+
+# Database files
+*.mdf
+*.ldf
+
+# Publish output
+publish/
+*.publishsettings
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Coverage
+coverage/
+*.coverage
+*.coveragexml
+
+# Others
+*.DS_Store
+Thumbs.db
