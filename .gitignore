@@ -1,0 +1,56 @@
+## Build results
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Visual Studio Code
+.vscode/
+
+## Rider
+.idea/
+
+## ASP.NET Publish
+*.Publish.xml
+*.pubxml
+*.pdb
+*.cache
+*.log
+
+## NuGet packages
+*.nupkg
+*.snupkg
+packages/
+.nuget/
+
+## Entity Framework
+Migrations/
+
+## Configuration files
+appsettings.*.json
+
+## Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+## DLLs and executables
+*.dll
+*.exe
+
+## Test results
+TestResults/
+*.trx
+
+## Others
+*.vs/
+*.dbmdl
+*.jfm
+_ReSharper.*
+*.resharper
+*.DotSettings.user
