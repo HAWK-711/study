@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
-using PostgresDataAccess.Models;
 
-namespace Models
+namespace PostgresDataAccess.Models
 {
     public class AppDbContext : DbContext
     {

@@ -1,5 +1,4 @@
 using Microsoft.EntityFrameworkCore;
-using Models;
 using PostgresDataAccess.Models;
 
 namespace PostgresDataAccess.Repositories

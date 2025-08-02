@@ -1,16 +1,16 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Models;
-using PostgresDataAccess.Repositories;
+using PostgresDataAccess.Models;
 
-namespace Dbconnection
+namespace PostgresDataAccess.Repositories.dbconnection
 {
     public static class RepositoryFactory
     {
-        private static string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=postgres";
-
-        public static void AddRepositories(this IServiceCollection services)
+        public static void AddRepositories(this IServiceCollection services, IConfiguration configuration)
         {
+            var connectionString = configuration.GetConnectionString("DefaultConnection");
+
             services.AddDbContext<AppDbContext>(options =>
                 options.UseNpgsql(connectionString));
 
