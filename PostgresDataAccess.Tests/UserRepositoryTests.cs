@@ -1,7 +1,6 @@
 using PostgresDataAccess.Repositories;
 using PostgresDataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-using Models;
 
 public class UserRepositoryTests
 {
