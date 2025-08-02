@@ -7,7 +7,7 @@ namespace Dbconnection
 {
     public static class RepositoryFactory
     {
-        private static string connectionString = "Host=localhost;Port=5432;Database=mydatabase;Username=myuser;Password=mypassword";
+        private static string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=postgres";
 
         public static void AddRepositories(this IServiceCollection services)
         {
