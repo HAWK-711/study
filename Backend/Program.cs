@@ -10,7 +10,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddRepositories(builder.Configuration);
-builder.Services.AddScoped<UserService>();
+//builder.Services.AddScoped<UserService>();
+builder.Services.AddServices();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
