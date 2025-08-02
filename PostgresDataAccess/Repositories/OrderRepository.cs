@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Models;
-using PostgresDataAccess.Repositories;
+using PostgresDataAccess.Models;
 
 namespace PostgresDataAccess.Repositories
 {
@@ -21,7 +20,7 @@ namespace PostgresDataAccess.Repositories
 
         public Order GetById(int id)
         {
-            return _context.Order.AsNoTracking().FirstOrDefault(o => o.Id == id);
+            return _context.Order.AsNoTracking().First(o => o.Id == id);
         }
 
         public void Add(Order order)

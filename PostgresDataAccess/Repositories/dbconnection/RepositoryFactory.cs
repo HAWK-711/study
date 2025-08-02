@@ -1,7 +1,7 @@
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-using Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using Models;
+using PostgresDataAccess.Repositories;
 
 namespace Dbconnection
 {
@@ -27,7 +27,14 @@ namespace Dbconnection
 
             foreach (var type in types)
             {
-                services.AddScoped(type.Service, type.Implementation);
+                if (type.Service != null)
+                {
+                    services.AddScoped(type.Service, type.Implementation);
+                }
+                else
+                {
+                    throw new InvalidOperationException($"No interface found for {type.Implementation.Name}");
+                }
             }
         }
     }

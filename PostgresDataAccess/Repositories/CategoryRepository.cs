@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Models;
-using PostgresDataAccess.Repositories;
+using PostgresDataAccess.Models;
 
 namespace PostgresDataAccess.Repositories
 {
@@ -21,7 +20,7 @@ namespace PostgresDataAccess.Repositories
 
         public Category GetById(int id)
         {
-            return _context.Categories.AsNoTracking().FirstOrDefault(c => c.Id == id);
+            return _context.Categories.AsNoTracking().First(c => c.Id == id);
         }
 
         public void Add(Category category)

@@ -1,7 +1,6 @@
-using System.Collections.Generic;
-using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Models;
-using PostgresDataAccess.Repositories;
+using PostgresDataAccess.Models;
 
 namespace PostgresDataAccess.Repositories
 {
@@ -21,7 +20,7 @@ namespace PostgresDataAccess.Repositories
 
         public Product GetById(int id)
         {
-            return _context.Product.AsNoTracking().FirstOrDefault(p => p.Id == id);
+            return _context.Product.AsNoTracking().First(p => p.Id == id);
         }
 
         public void Add(Product product)

@@ -1,8 +1,7 @@
-using Xunit;
 using PostgresDataAccess.Repositories;
 using PostgresDataAccess.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
+using Models;
 
 public class UserRepositoryTests
 {

@@ -1,64 +1,48 @@
-using System.Collections.Generic;
-using Npgsql;
+using Microsoft.EntityFrameworkCore;
+using Models;
 using PostgresDataAccess.Models;
 
 namespace PostgresDataAccess.Repositories
 {
     public class CustomerRepository : ICustomerRepository
     {
-        private readonly string _connectionString;
+        private readonly AppDbContext _context;
 
-        public CustomerRepository(string connectionString)
+        public CustomerRepository(AppDbContext context)
         {
-            _connectionString = connectionString;
+            _context = context;
         }
 
         public IEnumerable<Customer> GetAll()
         {
-            var customers = new List<Customer>();
-            using (var conn = new NpgsqlConnection(_connectionString))
-            {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand("SELECT id, name, email FROM customers", conn))
-                using (var reader = cmd.ExecuteReader())
-                {
-                    while (reader.Read())
-                    {
-                        customers.Add(new Customer
-                        {
-                            Id = reader.GetInt32(0),
-                            Name = reader.GetString(1),
-                            Email = reader.GetString(2)
-                        });
-                    }
-                }
-            }
-            return customers;
+            return _context.Customers.AsNoTracking().ToList();
         }
 
         public Customer GetById(int id)
         {
-            using (var conn = new NpgsqlConnection(_connectionString))
+            return _context.Customers.AsNoTracking().First(c => c.Id == id);
+        }
+
+        public void Add(Customer customer)
+        {
+            _context.Customers.Add(customer);
+            _context.SaveChanges();
+        }
+
+        public void Update(Customer customer)
+        {
+            _context.Customers.Update(customer);
+            _context.SaveChanges();
+        }
+
+        public void Delete(int id)
+        {
+            var customer = _context.Customers.Find(id);
+            if (customer != null)
             {
-                conn.Open();
-                using (var cmd = new NpgsqlCommand("SELECT id, name, email FROM customers WHERE id = @id", conn))
-                {
-                    cmd.Parameters.AddWithValue("id", id);
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        if (reader.Read())
-                        {
-                            return new Customer
-                            {
-                                Id = reader.GetInt32(0),
-                                Name = reader.GetString(1),
-                                Email = reader.GetString(2)
-                            };
-                        }
-                    }
-                }
+                _context.Customers.Remove(customer);
+                _context.SaveChanges();
             }
-            return null;
         }
     }
 }
